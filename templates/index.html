@@ -4,29 +4,39 @@
 
 <head>
     <title>Budget Tracker</title>
+
+    <head>Finance Tracker</head>
+    <p>Current Balance: ${{ current_balance }}</p>
+    <p>Total Income: ${{ total_income }}</p>
+    <p>Total Expense: ${{ total_expense }}</p>
 </head>
 
-<table>
-    <thead>
-        <th>Type</th>
-        <th>Amount</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Date</th>
-    </thead>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Date</th>
+            </tr>
+        </thead>
 
-    <tbody>
-        {% for transaction in transactions %}
-        <tr>
-            <td>{{ transaction[4] }}</td>
-            <td>{{ transaction[2] }}</td>
-            <td>{{ transaction[1] }}</td>
-            <td>{{ transaction[3] }}</td>
-            <td>{{ transaction[5] }}</td>
-        </tr>
-        {% endfor %}
+        <tbody>
+            {% for transaction in transactions %}
+            <tr>
+                <td>{{ transaction[4] }}</td>
+                <td>{{ transaction[2] }}</td>
+                <td>{{ transaction[1] }}</td>
+                <td>{{ transaction[3] }}</td>
+                <td>{{ transaction[5] }}</td>
+            </tr>
+            {% endfor %}
 
-    </tbody>
+        </tbody>
 
-</table>
+    </table>
+</body>
+
 </html>

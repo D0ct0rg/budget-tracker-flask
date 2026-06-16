@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from database import (
+    setup_database,
     add_transaction,
     view_transactions,
     update_transaction,
@@ -8,6 +9,8 @@ from database import (
 )
 
 app = Flask(__name__)
+
+setup_database()
 
 
 @app.route('/')
@@ -25,4 +28,5 @@ def home():
     )
 
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)
