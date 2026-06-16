@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <title>Budget Tracker</title>
+</head>
+
+<table>
+    <thead>
+        <th>Type</th>
+        <th>Amount</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Date</th>
+    </thead>
+
+    <tbody>
+        {% for transaction in transactions %}
+        <tr>
+            <td>{{ transaction[4] }}</td>
+            <td>{{ transaction[2] }}</td>
+            <td>{{ transaction[1] }}</td>
+            <td>{{ transaction[3] }}</td>
+            <td>{{ transaction[5] }}</td>
+        </tr>
+        {% endfor %}
+
+    </tbody>
+
+</table>
+</html>
