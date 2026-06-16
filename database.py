@@ -108,9 +108,3 @@ def get_summary_stats():
     connection.close()
 
     return current_balance, total_income, total_expense
-
-
-delete_transaction(1)
-print('deleted')
-delete_transaction(2)
-print('deleted')

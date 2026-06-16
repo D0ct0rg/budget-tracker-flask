@@ -9,6 +9,7 @@ from database import (
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def home():
     transactions = view_transactions()
@@ -19,8 +20,9 @@ def home():
         'index.html',
         transactions=transactions,
         current_balance=current_balance,
-        total_income = total_income,
-        total_expense = total_expense
+        total_income=total_income,
+        total_expense=total_expense
     )
+
 
 app.run(debug=True)
