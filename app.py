@@ -28,5 +28,19 @@ def home():
     )
 
 
+@app.route('/add', methods=['POST'])
+def add():
+    name = request.form['name']
+    amount = request.form['amount']
+    category = request.form['category']
+    transaction_type = request.form['transaction_type']
+    date = request.form['date']
+
+    if name.strip() != '' and amount.strip() != '':
+        add_transaction(name, amount, category, transaction_type, date)
+
+    return redirect('/')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
