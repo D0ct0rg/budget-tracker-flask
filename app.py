@@ -42,5 +42,11 @@ def add():
     return redirect('/')
 
 
+@app.route('/delete/<int:transaction_id>', methods=['POST'])
+def delete(transaction_id):
+    delete_transaction(transaction_id)
+    return redirect('/')
+
+
 if __name__ == '__main__':
     app.run(debug=True)

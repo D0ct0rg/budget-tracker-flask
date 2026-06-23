@@ -52,6 +52,11 @@
                 <td>{{ transaction[1] }}</td>
                 <td>{{ transaction[3] }}</td>
                 <td>{{ transaction[5] }}</td>
+                <td>
+                    <form action="/delete/{{ transaction[0] }}" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
             </tr>
             {% endfor %}
 
