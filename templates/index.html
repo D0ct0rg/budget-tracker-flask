@@ -53,6 +53,9 @@
                 <td>{{ transaction[3] }}</td>
                 <td>{{ transaction[5] }}</td>
                 <td>
+                    <a href="/edit/{{ transaction[0]  }}">Edit</a>
+                </td>
+                <td>
                     <form action="/delete/{{ transaction[0] }}" method="POST">
                         <button type="submit">Delete</button>
                     </form>

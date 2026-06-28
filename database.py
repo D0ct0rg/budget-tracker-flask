@@ -108,3 +108,19 @@ def get_summary_stats():
     connection.close()
 
     return current_balance, total_income, total_expense
+
+
+def get_transaction(transaction_id):
+    connection = sqlite3.connect('budget.db')
+    cursor = connection.cursor()
+
+    cursor.execute('''
+    SELECT * FROM transactions
+    WHERE id = ?
+    ''', (transaction_id,))
+
+    transaction = cursor.fetchone()
+
+    connection.close()
+
+    return transaction
