@@ -28,6 +28,7 @@ p {
 }
 
 .stat-card {
+    background-color: #f1f1f1;
     flex: 1;
     gap: 20px;
     padding: 20px;
@@ -118,4 +119,41 @@ tr:hover {
     padding: 6px 12px;
     border-radius: 20px;
     font-weight: bold;
+}
+
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+.dark-mode .container {
+    background-color: #1e1e1e;
+}
+
+.dark-mode .stat-card {
+    background-color: #2d2d2d;
+}
+
+.dark-mode input,
+.dark-mode select {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+}
+
+#dark-mode-toggle {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.dark-mode tr:hover {
+    background-color: #2a2a2a;
+}
+
+.top-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
 }
