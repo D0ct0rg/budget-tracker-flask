@@ -7,7 +7,8 @@ from database import (
     delete_transaction,
     get_summary_stats,
     get_transaction,
-    filter_transactions
+    filter_transactions,
+    get_expenses_by_category
 )
 
 app = Flask(__name__)
@@ -29,13 +30,20 @@ def home():
     else:
         transactions = view_transactions()
 
+    expenses_by_category = get_expenses_by_category()
+
+    chart_labels = [row[0] for row in expenses_by_category]
+    chart_values = [row[1] for row in expenses_by_category]
+
     return render_template(
         'index.html',
         transactions=transactions,
         current_balance=current_balance,
         total_income=total_income,
         total_expense=total_expense,
-        filter_type=filter_type
+        filter_type=filter_type,
+        chart_labels=chart_labels,
+        chart_values=chart_values
     )
 
 

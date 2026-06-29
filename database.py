@@ -140,3 +140,21 @@ def filter_transactions(transaction_type):
     connection.close()
 
     return transactions
+
+
+def get_expenses_by_category():
+    connection = sqlite3.connect("budget.db")
+    cursor = connection.cursor()
+
+    cursor.execute('''
+    SELECT category, SUM(amount)
+    FROM transactions
+    WHERE transaction_type = 'Expense'
+    GROUP BY category
+    ''')
+
+    expenses_by_category = cursor.fetchall()
+
+    connection.close()
+
+    return expenses_by_category
