@@ -14,16 +14,16 @@
         </div>
         <h1>Budget Tracker</h1>
         <div class="stats-container">
-            <div class="stat-card">
-                <h3>Current Balance</h3>
+            <div class="stat-card balance-card">
+                <h3>💵 Current Balance</h3>
                 <p>${{ "{:,.2f}".format(current_balance) }}</p>
             </div>
-            <div class="stat-card">
-                <h3>Total Income</h3>
+            <div class="stat-card income-card">
+                <h3>📈 Total Income</h3>
                 <p>${{ "{:,.2f}".format(total_income) }}</p>
             </div>
-            <div class="stat-card">
-                <h3>Total Expense</h3>
+            <div class="stat-card expense-card">
+                <h3>📉 Total Expense</h3>
                 <p>${{ "{:,.2f}".format(total_expense) }}</p>
             </div>
         </div>
@@ -51,7 +51,13 @@
             <input type="date" name="date" required>
             <button type="submit" class="add-button">Add Transaction</button>
         </form>
-
+        <div class="filter-links">
+            <a href="/" class="filter-button {% if filter_type=='all' %}active-filter{% endif %}">All</a>
+            <a href="/?filter=income"
+                class="filter-button income-filter {% if filter_type=='income' %}active-filter{% endif %}">Income</a>
+            <a href="/?filter=expense"
+                class="filter-button expense-filter {% if filter_type=='expense' %}active-filter{% endif %}">Expense</a>
+        </div>
         <table>
             <thead>
                 <tr>
@@ -78,10 +84,10 @@
                     <td>{{ transaction[1] }}</td>
                     <td>{{ transaction[3] }}</td>
                     <td>{{ transaction[5] }}</td>
-                    <td><a href="/edit/{{ transaction[0] }}" class="edit-button">Edit</a></td>
+                    <td><a href="/edit/{{ transaction[0] }}" class="edit-button">✏️ Edit</a></td>
                     <td>
                         <form action="/delete/{{ transaction[0] }}" method="POST">
-                            <button type="submit" class="delete-button">Delete</button>
+                            <button type="submit" class="delete-button">🗑️ Delete</button>
                         </form>
                     </td>
                 </tr>

@@ -6,7 +6,8 @@ from database import (
     update_transaction,
     delete_transaction,
     get_summary_stats,
-    get_transaction
+    get_transaction,
+    filter_transactions
 )
 
 app = Flask(__name__)
@@ -16,16 +17,25 @@ setup_database()
 
 @app.route('/')
 def home():
-    transactions = view_transactions()
 
     current_balance, total_income, total_expense = get_summary_stats()
+
+    filter_type = request.args.get('filter', 'all')
+
+    if filter_type == 'income':
+        transactions = filter_transactions('Income')
+    elif filter_type == 'expense':
+        transactions = filter_transactions('Expense')
+    else:
+        transactions = view_transactions()
 
     return render_template(
         'index.html',
         transactions=transactions,
         current_balance=current_balance,
         total_income=total_income,
-        total_expense=total_expense
+        total_expense=total_expense,
+        filter_type=filter_type
     )
 
 

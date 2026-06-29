@@ -1,8 +1,22 @@
 const darkModeButton = document.getElementById('dark-mode-toggle');
 
+function updateDarkModeButtonText() {
+    if (!darkModeButton) {
+        return;
+    }
+
+    if (document.body.classList.contains('dark-mode')) {
+        darkModeButton.textContent = '☀️ Light Mode';
+    } else {
+        darkModeButton.textContent = '🌙 Dark Mode';
+    }
+}
+
 if (localStorage.getItem('darkMode') === 'enabled') {
     document.body.classList.add('dark-mode');
 }
+
+updateDarkModeButtonText();
 
 if (darkModeButton) {
     darkModeButton.addEventListener('click', function () {
@@ -13,5 +27,6 @@ if (darkModeButton) {
         } else {
             localStorage.setItem('darkMode', 'disabled');
         }
+        updateDarkModeButtonText();
     });
 }

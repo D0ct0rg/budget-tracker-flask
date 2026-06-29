@@ -124,3 +124,19 @@ def get_transaction(transaction_id):
     connection.close()
 
     return transaction
+
+
+def filter_transactions(transaction_type):
+    connection = sqlite3.connect('budget.db')
+    cursor = connection.cursor()
+
+    cursor.execute('''
+    SELECT * FROM transactions
+    WHERE transaction_type = ?
+    ''', (transaction_type,))
+
+    transactions = cursor.fetchall()
+
+    connection.close()
+
+    return transactions
